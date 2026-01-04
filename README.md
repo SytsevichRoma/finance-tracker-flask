@@ -1,103 +1,85 @@
-Finance Tracker (Flask)
+# Finance Tracker (Flask)
 
-A web application for tracking personal income and expenses with user authentication. This project was developed as a university course project and refined for a portfolio to demonstrate backend development fundamentals.
+A simple web application for tracking personal **income** and **expenses** with user authentication.
 
-Features
+This project was created as a **university course project** and later prepared as a **portfolio project** to demonstrate backend development basics.
 
-User Authentication: Secure registration and login functionality using Flask-Login.
+---
 
-Security: Password storage using cryptographic hashing via Werkzeug.
+## Features
+- User registration and login (Flask-Login)
+- Secure password storage (password hashing)
+- Add income and expense transactions
+- Dashboard with total income, expenses and balance
+- Delete user-owned transactions
+- SQLite database with automatic initialization
 
-Transaction Management: Capability to add, view, and delete income and expense records.
+---
 
-Financial Dashboard: Automatic calculation of total income, expenses, and current balance.
+## Tech Stack
+- Python
+- Flask
+- Flask-Login
+- SQLite
+- Jinja2 (HTML templates)
 
-Data Isolation: Users have access only to their own personal data.
+---
 
-Database Automation: Automatic SQLite database initialization on the first application launch.
-
-Tech Stack
-
-Language: Python
-
-Framework: Flask
-
-Database: SQLite
-
-Authentication: Flask-Login
-
-Templating: Jinja2
-
-Styling: HTML5 / CSS3
-
-Project Structure
-
+## Project Structure
 finance-tracker-flask/
-├── app.py              # Main application logic and routing
-├── db.py               # Database connection and schema setup
-├── requirements.txt    # Project dependencies
-├── .gitignore          # Git exclusion rules
-├── .env.example        # Environment variables template
-└── templates/          # HTML templates folder
-    ├── base.html       # Primary layout template
-    ├── login.html      # Authentication page
-    ├── register.html   # User registration page
-    └── dashboard.html  # Main user interface
+│
+├── app.py # Application logic, routes, authentication
+├── db.py # Database connection and initialization
+├── requirements.txt # Project dependencies
+├── .gitignore
+├── .env.example # Example environment variables
+├── templates/ # HTML templates
+│ ├── base.html
+│ ├── login.html
+│ ├── register.html
+│ └── dashboard.html
 
+yaml
+Копіювати код
 
-Installation and Setup
+---
 
-1. Environment Setup
+## How to Run Locally
 
-Create a virtual environment to manage dependencies:
-
+### 1. Create virtual environment
+```bash
 python -m venv .venv
+2. Activate it
+Windows
 
+bash
+Копіювати код
+.venv\Scripts\Activate
+macOS / Linux
 
-2. Activation
-
-Activate the virtual environment based on your operating system:
-
-Windows:
-
-.venv\Scripts\activate
-
-
-macOS / Linux:
-
+bash
+Копіювати код
 source .venv/bin/activate
-
-
-3. Dependency Installation
-
-Install the required Python packages:
-
+3. Install dependencies
+bash
+Копіювати код
 pip install -r requirements.txt
-
-
-4. Running the Application
-
-Start the Flask development server:
-
+4. Run the application
+bash
+Копіювати код
 python app.py
+Open in browser:
 
+cpp
+Копіювати код
+http://127.0.0.1:5000
+Database
+The application uses SQLite for simplicity.
+Database tables are created automatically on first run.
 
-Access the application by navigating to: http://127.0.0.1:5000
-
-Database Management
-
-The application utilizes SQLite for data persistence. The database file and required tables are generated automatically during the first execution of app.py. No manual SQL configuration is required for local setup.
-
-Security Considerations
-
-This project is intended for educational purposes. For production deployments, ensure that:
-
-A secure SECRET_KEY is defined in environment variables.
-
-CSRF protection is fully implemented.
-
-A production-grade WSGI server (e.g., Gunicorn) is used instead of the Flask built-in server.
+Notes
+This project is intended for educational and portfolio purposes.
+In a production environment, additional security and configuration would be required.
 
 Author
-
 Sytsevich Roma
