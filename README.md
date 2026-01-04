@@ -1,64 +1,83 @@
 # Finance Tracker (Flask)
 
-Simple web application for tracking personal income and expenses.
+A simple web application for tracking personal **income** and **expenses** with user authentication.
 
-The project was created as a **university course project** and demonstrates
-basic backend development with authentication and database interaction.
+This project was created as a **university course project** and later prepared as a **portfolio project** to demonstrate backend development basics.
+
+---
 
 ## Features
 - User registration and login (Flask-Login)
+- Secure password storage (hashing)
 - Add income and expense transactions
-- Dashboard with totals: income, expenses, balance
-- Delete own transactions
+- Dashboard with total income, expenses and balance
+- Delete user-owned transactions
 - SQLite database with automatic initialization
+
+---
 
 ## Tech Stack
 - Python
 - Flask
 - Flask-Login
 - SQLite
-- Jinja2 templates
+- Jinja2 (HTML templates)
+
+---
 
 ## Project Structure
-- `app.py` — application logic, routes, authentication
-- `db.py` — database connection and initialization
-- `templates/` — HTML templates
+finance-tracker-flask/
+│
+├── app.py # Application logic, routes, authentication
+├── db.py # Database connection and initialization
+├── requirements.txt # Project dependencies
+├── .gitignore
+├── .env.example # Example environment variables
+├── templates/ # HTML templates
+│ ├── base.html
+│ ├── login.html
+│ ├── register.html
+│ └── dashboard.html
 
-## How to run
 
-Create virtual environment:
-```bash
+---
+
+## How to Run Locally
+
+### 1. Create virtual environment
+
 python -m venv .venv
-Activate it:
-
+2. Activate it
 Windows
 
-bash
-Копіювати код
+
+
 .venv\Scripts\Activate
 macOS / Linux
 
-bash
-Копіювати код
+
+
 source .venv/bin/activate
-Install dependencies:
+3. Install dependencies
 
-bash
-Копіювати код
+
 pip install -r requirements.txt
-Run the app:
+4. Run the application
 
-bash
-Копіювати код
+
 python app.py
 Open in browser:
 
-cpp
-Копіювати код
+
+
 http://127.0.0.1:5000
-Screenshots
-(Add screenshots here after upload)
+Database
+The application uses SQLite for simplicity.
+Database tables are created automatically on first run.
 
 Notes
-This project uses SQLite for simplicity.
-In a production environment, a more robust database and environment configuration would be used.
+This project is intended for educational and portfolio purposes.
+In a production environment, additional security and configuration would be required.
+
+Author
+Sytsevich Roma
