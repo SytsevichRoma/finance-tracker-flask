@@ -1,46 +1,62 @@
 Finance Tracker (Flask)
 
-A simple web application for tracking personal income and expenses with user authentication.
+A web application for tracking personal income and expenses with user authentication. This project was developed as a university course project and refined for a portfolio to demonstrate backend development fundamentals.
 
-This project was created as a university course project and later prepared as a portfolio project to demonstrate backend development basics.
+Features
 
-✨ Features
+User Authentication: Secure registration and login functionality using Flask-Login.
 
-User Authentication: Secure registration and login using Flask-Login.
+Security: Password storage using cryptographic hashing via Werkzeug.
 
-Security: Password storage with hashing (Werkzeug).
+Transaction Management: Capability to add, view, and delete income and expense records.
 
-Transaction Management: Add income and expense records.
+Financial Dashboard: Automatic calculation of total income, expenses, and current balance.
 
-Dashboard: Real-time calculation of total income, expenses, and current balance.
+Data Isolation: Users have access only to their own personal data.
 
-Data Protection: Users can only view and delete their own transactions.
+Database Automation: Automatic SQLite database initialization on the first application launch.
 
-Auto-setup: SQLite database initializes automatically on the first run.
+Tech Stack
 
-📂 Project Structure
+Language: Python
+
+Framework: Flask
+
+Database: SQLite
+
+Authentication: Flask-Login
+
+Templating: Jinja2
+
+Styling: HTML5 / CSS3
+
+Project Structure
 
 finance-tracker-flask/
-├── app.py              # Main application logic and routes
-├── db.py               # Database schema and initialization
-├── requirements.txt    # List of dependencies
-├── .gitignore          # Git exclusion file
-├── .env.example        # Template for environment variables
-└── templates/          # Jinja2 HTML templates
-    ├── base.html       # Shared layout
-    ├── login.html      # Login page
-    ├── register.html   # Registration page
-    └── dashboard.html  # User dashboard
+├── app.py              # Main application logic and routing
+├── db.py               # Database connection and schema setup
+├── requirements.txt    # Project dependencies
+├── .gitignore          # Git exclusion rules
+├── .env.example        # Environment variables template
+└── templates/          # HTML templates folder
+    ├── base.html       # Primary layout template
+    ├── login.html      # Authentication page
+    ├── register.html   # User registration page
+    └── dashboard.html  # Main user interface
 
 
-🚀 How to Run Locally
+Installation and Setup
 
-1. Create a virtual environment
+1. Environment Setup
+
+Create a virtual environment to manage dependencies:
 
 python -m venv .venv
 
 
-2. Activate the environment
+2. Activation
+
+Activate the virtual environment based on your operating system:
 
 Windows:
 
@@ -52,26 +68,36 @@ macOS / Linux:
 source .venv/bin/activate
 
 
-3. Install dependencies
+3. Dependency Installation
+
+Install the required Python packages:
 
 pip install -r requirements.txt
 
 
-4. Run the application
+4. Running the Application
+
+Start the Flask development server:
 
 python app.py
 
 
-Open your browser at: http://127.0.0.1:5000
+Access the application by navigating to: http://127.0.0.1:5000
 
-📊 Database
+Database Management
 
-The application uses SQLite for simplicity. The database file and tables are created automatically when the script runs for the first time.
+The application utilizes SQLite for data persistence. The database file and required tables are generated automatically during the first execution of app.py. No manual SQL configuration is required for local setup.
 
-📝 Notes
+Security Considerations
 
-This project is intended for educational and portfolio purposes. For a production environment, additional configuration (like CSRF protection and production WSGI server) would be required.
+This project is intended for educational purposes. For production deployments, ensure that:
 
-👤 Author
+A secure SECRET_KEY is defined in environment variables.
+
+CSRF protection is fully implemented.
+
+A production-grade WSGI server (e.g., Gunicorn) is used instead of the Flask built-in server.
+
+Author
 
 Sytsevich Roma
