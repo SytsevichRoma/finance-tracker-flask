@@ -1,0 +1,13 @@
+<!-- templates/login.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Вхід</h2>
+  <form method="post" class="row">
+    <input name="email" type="email" placeholder="email" required>
+    <input name="password" type="password" placeholder="пароль" required>
+    <button type="submit">Увійти</button>
+  </form>
+  <p class="muted">Нема акаунта? <a href="{{ url_for('register') }}">Реєстрація</a></p>
+</div>
+{% endblock %}

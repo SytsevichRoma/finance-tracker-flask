@@ -1,0 +1,50 @@
+<!-- templates/base.html -->
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{{ app_name }}</title>
+  <style>
+    body{font-family:system-ui,Arial;margin:0;background:#f6f7fb}
+    .nav{background:#111;color:#fff;padding:12px 16px;display:flex;justify-content:space-between}
+    .nav a{color:#fff;text-decoration:none;margin-left:12px}
+    .wrap{max-width:900px;margin:18px auto;padding:0 14px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.06);padding:14px;margin:12px 0}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    input,select{padding:10px;border:1px solid #ddd;border-radius:10px}
+    button{padding:10px 12px;border:0;border-radius:10px;background:#2d5bff;color:#fff;cursor:pointer}
+    .danger{background:#d83434}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
+    .flash{padding:10px;border-radius:10px;background:#eef;margin:10px 0}
+    .muted{color:#666}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div>{{ app_name }}</div>
+    <div>
+      {% if current_user.is_authenticated %}
+        <span class="muted" style="color:#bbb">{{ current_user.email }}</span>
+        <a href="{{ url_for('dashboard') }}">Дашборд</a>
+        <a href="{{ url_for('logout') }}">Вийти</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Вхід</a>
+        <a href="{{ url_for('register') }}">Реєстрація</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="wrap">
+    {% with msgs = get_flashed_messages(with_categories=false) %}
+      {% if msgs %}
+        {% for m in msgs %}
+          <div class="flash">{{ m }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
