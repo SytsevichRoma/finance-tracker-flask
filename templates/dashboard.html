@@ -1,69 +1,80 @@
-<!-- templates/dashboard.html -->
 {% extends "base.html" %}
 {% block content %}
+
 <div class="card">
-  <h2>Баланс</h2>
+  <h2 class="h2">Баланс</h2>
   <div class="grid">
-    <div class="card">
-      <div class="muted">Доходи</div>
-      <div style="font-size:24px;font-weight:700">{{ "%.2f"|format(income) }}</div>
+    <div class="stat">
+      <div class="label">Доходи</div>
+      <div class="value">{{ "%.2f"|format(income) }}</div>
     </div>
-    <div class="card">
-      <div class="muted">Витрати</div>
-      <div style="font-size:24px;font-weight:700">{{ "%.2f"|format(expense) }}</div>
+    <div class="stat">
+      <div class="label">Витрати</div>
+      <div class="value">{{ "%.2f"|format(expense) }}</div>
     </div>
-    <div class="card">
-      <div class="muted">Баланс</div>
-      <div style="font-size:24px;font-weight:700">{{ "%.2f"|format(balance) }}</div>
+    <div class="stat">
+      <div class="label">Баланс</div>
+      <div class="value">{{ "%.2f"|format(balance) }}</div>
     </div>
   </div>
 </div>
 
 <div class="card">
-  <h2>Додати операцію</h2>
-  <form method="post" class="row">
+  <h2 class="h2">Додати операцію</h2>
+  <form method="post" class="row form-wide">
     <select name="kind">
       <option value="expense">Витрата</option>
       <option value="income">Дохід</option>
     </select>
     <input name="amount" type="text" placeholder="сума" required>
     <input name="tdate" type="date" value="{{ today }}" required>
-    <input name="note" type="text" placeholder="коментар (не обов'язково)" style="min-width:240px">
+    <input name="note" type="text" placeholder="коментар (не обовʼязково)">
     <button type="submit">Додати</button>
   </form>
 </div>
 
 <div class="card">
-  <h2>Операції</h2>
+  <h2 class="h2">Операції</h2>
+
   {% if not items %}
     <p class="muted">Поки що немає операцій.</p>
   {% else %}
-    <table>
-      <thead>
-        <tr>
-          <th>Дата</th>
-          <th>Тип</th>
-          <th>Сума</th>
-          <th>Коментар</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for t in items %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Тип</th>
+            <th>Сума</th>
+            <th>Коментар</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in items %}
           <tr>
             <td>{{ t["tdate"] }}</td>
-            <td>{{ "Дохід" if t["kind"]=="income" else "Витрата" }}</td>
+            <td>
+              {% if t["kind"] == "income" %}
+                <span class="badge income">Дохід</span>
+              {% else %}
+                <span class="badge expense">Витрата</span>
+              {% endif %}
+            </td>
             <td>{{ "%.2f"|format(t["amount"]) }}</td>
             <td>{{ t["note"] or "" }}</td>
             <td>
-              <form method="post" action="{{ url_for('delete_transaction', tid=t['id']) }}" onsubmit="return confirm('Видалити?')">
-                <button class="danger" type="submit">X</button>
+              <form method="post" action="{{ url_for('delete_transaction', tid=t['id']) }}"
+                    onsubmit="return confirm('Видалити?')">
+                <button type="submit" class="danger">X</button>
               </form>
             </td>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   {% endif %}
 </div>
+
 {% endblock %}
